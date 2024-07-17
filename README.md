@@ -1,29 +1,38 @@
 # DATE-TIME-FUNCTIONS-USE-CASE
 
 CREATE TABLE [dbo].[loginemployee](
+
 	[name] [varchar](50) NULL,
+ 
 	[checkindate] [datetime] NULL,
+ 
 	[checkoutdate] [datetime] NULL
+ 
 ) ON [PRIMARY]
 GO
 INSERT [dbo].[loginemployee] ([name], [checkindate], [checkoutdate]) VALUES (N'Bob', CAST(N'2023-07-01T09:00:00.000' AS DateTime), CAST(N'2023-07-01T18:00:00.000' AS DateTime))
+
 INSERT [dbo].[loginemployee] ([name], [checkindate], [checkoutdate]) VALUES (N'Alice', CAST(N'2023-07-02T08:00:00.000' AS DateTime), CAST(N'2023-07-02T19:00:00.000' AS DateTime))
+
 INSERT [dbo].[loginemployee] ([name], [checkindate], [checkoutdate]) VALUES (N'Bob', CAST(N'2023-07-02T09:00:00.000' AS DateTime), CAST(N'2023-07-02T19:00:00.000' AS DateTime))
+
 INSERT [dbo].[loginemployee] ([name], [checkindate], [checkoutdate]) VALUES (N'Charlie', CAST(N'2023-07-01T07:00:00.000' AS DateTime), CAST(N'2023-07-01T15:00:00.000' AS DateTime))
+
 INSERT [dbo].[loginemployee] ([name], [checkindate], [checkoutdate]) VALUES (N'Alice', CAST(N'2023-07-01T08:00:00.000' AS DateTime), NULL)
+
 INSERT [dbo].[loginemployee] ([name], [checkindate], [checkoutdate]) VALUES (N'Bob', CAST(N'2023-09-01T09:00:00.000' AS DateTime), CAST(N'2023-09-01T14:00:00.000' AS DateTime))
+
 INSERT [dbo].[loginemployee] ([name], [checkindate], [checkoutdate]) VALUES (N'Alice', CAST(N'2023-03-01T09:00:00.000' AS DateTime), NULL)
 GO
-
 
 DATE TIME FUNCTIONS USE CASE
 
 SELECT
-    NAME,
+        NAME,
     
-    YEAR(CHECKINDATE) AS [WORK YEAR],
+        YEAR(CHECKINDATE) AS [WORK YEAR],
     
-    MONTH(CHECKINDATE) AS [WORK MONTH],
+        MONTH(CHECKINDATE) AS [WORK MONTH],
     
 	UPPER(DATENAME(DAY, CHECKINDATE)) AS [WORK DAY],
  
@@ -37,7 +46,7 @@ SELECT
  
 	DATEPART(HOUR,CHECKOUTDATE) - DATEPART(HOUR, CHECKINDATE) AS [TOTAL HOURS USING DATEPART],	
  
-  DATEDIFF(MINUTE, CHECKINDATE, CHECKOUTDATE) / 60.0 AS [TOTAL HOURS USING MINUTE],
+       DATEDIFF(MINUTE, CHECKINDATE, CHECKOUTDATE) / 60.0 AS [TOTAL HOURS USING MINUTE],
     
 	FORMAT(CHECKINDATE,  'yyyy-MM-dd') AS [FORMATTED DATE],
  
